@@ -76,14 +76,14 @@ public class _25_K个一组翻转链表{
 //leetcode submit region begin(Prohibit modification and deletion)
 
     /**
-     * Definition for singly-linked list.
-     * public class ListNode {
-     * int val;
-     * ListNode next;
-     * ListNode() {}
-     * ListNode(int val) { this.val = val; }
-     * ListNode(int val, ListNode next) { this.val = val; this.next = next; }
-     * }
+     * 负杂度O(n)
+     *
+     * 思路：
+     *   1.将链表分组（根据K值）
+     *   2.将分组的链表反转 并记录上一组的尾节点
+     *   3.将上一组的尾节点指向当前反转后的组的头节点
+     *   4.将最后没有分组的（如果有）使用最后一组的尾节点指向其头节点
+     *
      */
     static class Solution {
         public ListNode reverseKGroup(ListNode head, int k) {
