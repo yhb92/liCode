@@ -71,6 +71,11 @@ public class _141_环形链表 {
      * }
      */
     public class Solution {
+        /**
+         * 1.快指针走两步，慢指针走一步当他们相遇就说用存在环
+         * @param head
+         * @return
+         */
         public boolean hasCycle(ListNode head) {
             if (head == null || head.next == null) return false;
             ListNode fast = head.next.next;
