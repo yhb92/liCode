@@ -60,6 +60,17 @@ public class _206_反转链表 {
      */
     class Solution {
 
+        /**
+         * 复杂度O(n)
+         * 思路：
+         *    1.使用指针指向上一个节点备用
+         *    2.遍历链表临时保存当前节点备用
+         *    3.将当前节点的下一个节点指向上一节点
+         *    4.将当前下一节点作为当前节点（遍历）
+         *    5.移动指针到当前节点作为下一节点的next节点
+         * @param head
+         * @return
+         */
         public ListNode reverseList(ListNode head) {
             ListNode node = null;
             while (head != null){
