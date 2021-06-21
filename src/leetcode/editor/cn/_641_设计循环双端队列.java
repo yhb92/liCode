@@ -174,9 +174,6 @@ class MyCircularDeque {
                 first = arr.length - 1;
                 arr[first] = value;
             }
-        }else if (index == size){
-            // 尾部添加
-            arr[conversionIndex] = value;
         }else {
             // 其他位置 （0 < index < size）
             for (int i = size - 1; i >= index;i++){
@@ -184,8 +181,8 @@ class MyCircularDeque {
                 int newIndex = conversionIndex(i + 1);
                 arr[newIndex] = arr[oldIndex];
             }
-            arr[conversionIndex] = value;
         }
+        arr[conversionIndex] = value;
         size++;
         return true;
     }
@@ -211,6 +208,7 @@ public static void main(String[] args) {
     MyCircularDeque deque = new _641_设计循环双端队列().new MyCircularDeque(3);
     deque.insertFront(5);
     deque.insertLast(7);
+
     System.out.println(deque.getFront());;
     deque.insertLast(3);
     System.out.println(deque.getRear());
