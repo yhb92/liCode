@@ -59,11 +59,38 @@ class MinStack {
     public MinStack() {
         arr = new int[10];
     }
-    
+
+    /**
+     * 思路：添加数据时取最小值入栈
+     * （因为在栈时先进后出的只要最小值没有被弹出来就会一直是其时最小值）
+     * @param val
+     */
     public void push(int val) {
         capacity();
         arr[size++] = val;
 
+        push2(val);
+
+    }
+
+    /**
+     * 最小值保存方式
+     * @param val
+     */
+    private void push2(int val){
+        if (node == null){
+            node = new Node(val,null);
+        }else {
+            int min = Math.min(node.val,val);
+            node = new Node(min,node);
+        }
+    }
+
+    /**
+     * 链表排序方式 效率低
+     * @param val
+     */
+    private void push1(int val){
         if (node == null){
             node = new Node(val,null);
         }else {
@@ -90,11 +117,28 @@ class MinStack {
             }
 
         }
-
     }
-    
+
+    /**
+     * 思路：由于栈中永远保存的是当前的最小值 因此字需要弹出即可
+     */
     public void pop() {
         int val = arr[size - 1];
+        pop2();
+        size--;
+    }
+
+    private void pop2(){
+        if (node != null){
+            node = node.next;
+        }
+    }
+
+    /**
+     * 链表排序方式
+     * @param val
+     */
+    private void pop1(int val){
         Node head = node;
         Node prv = null;
         while (head != null){
@@ -109,7 +153,6 @@ class MinStack {
             prv = head;
             head = head.next;
         }
-        size--;
     }
     
     public int top() {
